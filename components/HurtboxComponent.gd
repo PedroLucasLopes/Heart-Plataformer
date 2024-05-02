@@ -1,0 +1,13 @@
+class_name HurtboxComponent
+extends Area2D
+
+var is_invencible = false :
+	set(value):
+		is_invencible = value
+		
+		for child in get_children():
+			if not child is CollisionShape2D and not child is CollisionPolygon2D: continue
+			
+			child.set_deferred("disabled", is_invencible)
+
+signal hurt(hitbox)

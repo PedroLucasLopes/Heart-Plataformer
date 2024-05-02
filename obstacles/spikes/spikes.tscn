@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnq0mjjbtk3bj"]
+
+[ext_resource type="Texture2D" uid="uid://ix5fa6seoqnx" path="res://assets/spikes.png" id="1_yuiba"]
+[ext_resource type="Script" path="res://components/HitboxComponent.gd" id="2_snsyq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tat5t"]
+size = Vector2(12, 5)
+
+[node name="Spikes" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yuiba")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_snsyq")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitboxComponent"]
+polygon = PackedVector2Array(-8, 8, -8, 6, -5, -1, -4, -1, -1, 6, 0, 6, 3, -1, 4, -1, 8, 6, 8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_tat5t")
